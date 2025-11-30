@@ -100,4 +100,16 @@ function handleClick(e) {
     saveState();
 }
 
+function handleReset() {
+    objs = [];
+    plank.querySelectorAll('.weight-object').forEach(e => e.remove());
+    angle = 0;
+    plank.style.transform = 'translateX(-50%) rotate(0deg)';
+    nextW = randWeight();
+    updateStats();
+    logP.innerHTML = '';
+    if ('seesawState' in localStorage) delete localStorage.seesawState;
+}
+
 plank.addEventListener('click', handleClick);
+resetBtn.addEventListener('click', handleReset);
