@@ -58,6 +58,14 @@ function updateTilt() {
     plank.style.transform = `translateX(-50%) rotate(${angle}deg)`;
 }
 
+function addLog(w,d,s) {
+    const item = document.createElement('div');
+    item.className = 'log-item ' + s;
+    item.textContent = `🟡 ${w}kg dropped on ${s} side at ${Math.round(Math.abs(d))}px`;
+    logP.insertBefore(item, logP.firstChild);
+    while(logP.children.length > 10) logP.removeChild(logP.lastChild);
+}
+
 function renderObj(o) {
     const el = document.createElement('div');
     el.className = 'weight-object';
@@ -76,3 +84,20 @@ function renderAll() {
     plank.querySelectorAll('.weight-object').forEach(e => e.remove());
     objs.forEach(renderObj);
 }
+
+function handleClick(e) {
+    const rect = plank.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    const d = clickX - PLANK_W/2;
+    const side = d < 0 ? 'left' : 'right';
+    const newObj = {id: Date.now(), w: nextW, d, c: randColor()};
+    objs.push(newObj);
+    addLog(newObj.w, newObj.d, side);
+    renderObj(newObj);
+    updateTilt();
+    nextW = randWeight();
+    updateStats();
+    saveState();
+}
+
+plank.addEventListener('click', handleClick);
