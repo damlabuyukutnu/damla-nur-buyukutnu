@@ -46,3 +46,39 @@ h1 {
 .next { color: #9253ab; }
 .right { color: #26a95d; }
 .angle { color: #2f92d4; }
+
+.seesaw {
+    position: relative;
+    width: 600px;
+    height: 350px;
+    background-color: rgb(178, 213, 228);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.pivot {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 40px solid #34495e;
+}
+
+.plank {
+    position: absolute;
+    bottom: 115px;
+    left: 50%;
+    width: 400px;
+    height: 15px;
+    background: linear-gradient(to bottom, #8B4513, #654321);
+    border-radius: 5px;
+    transform-origin: center center;
+    transform: translateX(-50%) rotate(0deg);
+    transition: transform 0.5s ease-out;
+    cursor: pointer;
+}
