@@ -74,11 +74,19 @@ function renderObj(o) {
     el.style.width = el.style.height = size + 'px';
     el.style.backgroundColor = o.c;
     el.textContent = o.w + 'kg';
-    const x = PLANK_W/2 + o.d;
+    const plankW = plank.clientWidth; 
+    const x = plankW / 2 + o.d * (plankW / PLANK_W); 
     el.style.left = (x - size/2) + 'px';
     el.style.bottom = PLANK_H + 'px';
     plank.appendChild(el);
 }
+
+window.addEventListener('resize', () => {
+    renderAll();
+    updateTilt();
+});
+
+
 
 function renderAll() {
     plank.querySelectorAll('.weight-object').forEach(e => e.remove());
