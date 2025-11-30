@@ -2,7 +2,7 @@
 
 This project is an interactive seesaw simulation built with **HTML, CSS, and JavaScript**. Users can click on the plank to drop weights, see the resulting tilt angle, and track the total weights on each side.
 
-![Seesaw] <img width="696" height="805" alt="seesaw" src="https://github.com/user-attachments/assets/3def2944-ec77-44e6-80ed-59c793ffce33" />
+<img width="696" height="805" alt="seesaw" src="https://github.com/user-attachments/assets/3def2944-ec77-44e6-80ed-59c793ffce33" />
 
 ## Thought Process and Design Decisions
 
@@ -28,7 +28,7 @@ This project is an interactive seesaw simulation built with **HTML, CSS, and Jav
 - Angle calculation is linear and does not include complex balance equations.
 
 ## AI Assistance
-- AI tools (e.g., ChatGPT, GitHub Copilot) were used **only for syntax suggestions and debugging**.  
+- AI tools were used **only for syntax suggestions and debugging**.  
 - All core logic, calculations, and code structure were written entirely by me.  
 
 ## Live Demo
