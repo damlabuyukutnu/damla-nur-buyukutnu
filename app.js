@@ -96,7 +96,8 @@ function renderAll() {
 function handleClick(e) {
     const rect = plank.getBoundingClientRect();
     const clickX = e.clientX - rect.left;
-    const d = clickX - PLANK_W/2;
+    const plankW = plank.clientWidth; 
+    const d = (clickX - plankW / 2) * (PLANK_W / plankW);
     const side = d < 0 ? 'left' : 'right';
     const newObj = {id: Date.now(), w: nextW, d, c: randColor()};
     objs.push(newObj);
@@ -107,6 +108,7 @@ function handleClick(e) {
     updateStats();
     saveState();
 }
+
 
 function handleReset() {
     objs = [];
