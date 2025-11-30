@@ -21,3 +21,39 @@ const randColor = () => {
     const c = ['#e74c3c','#3498db','#2ecc71','#f39c12','#9b59b6','#1abc9c','#e67e22','#34495e'];
     return c[Math.floor(Math.random() * c.length)];
 };
+
+function calcSizes(w) { return 20 + w*3; }
+
+function calcTorques() {
+    let lT = 0, rT = 0;
+    objs.forEach(o => {
+        const t = o.w * Math.abs(o.d);
+        o.d < 0 ? lT += t : rT += t;
+    });
+    return {lT, rT};
+}
+
+function calcAngle() {
+    const {lT, rT} = calcTorques();
+    let a = (rT - lT)/10;
+    return Math.max(-MAX_A, Math.min(MAX_A, a));
+}
+
+function totalWeights() {
+    let l = 0, r = 0;
+    objs.forEach(o => o.d < 0 ? l += o.w : r += o.w);
+    return {l,r};
+}
+
+function updateStats() {
+    const {l,r} = totalWeights();
+    lDisp.textContent = l + ' kg';
+    rDisp.textContent = r + ' kg';
+    nDisp.textContent = nextW + ' kg';
+    aDisp.textContent = angle.toFixed(1) + '°';
+}
+
+function updateTilt() {
+    angle = calcAngle();
+    plank.style.transform = `translateX(-50%) rotate(${angle}deg)`;
+}
