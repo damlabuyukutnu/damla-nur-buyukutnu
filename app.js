@@ -57,3 +57,22 @@ function updateTilt() {
     angle = calcAngle();
     plank.style.transform = `translateX(-50%) rotate(${angle}deg)`;
 }
+
+function renderObj(o) {
+    const el = document.createElement('div');
+    el.className = 'weight-object';
+    el.id = 'o-' + o.id;
+    const size = calcSizes(o.w);
+    el.style.width = el.style.height = size + 'px';
+    el.style.backgroundColor = o.c;
+    el.textContent = o.w + 'kg';
+    const x = PLANK_W/2 + o.d;
+    el.style.left = (x - size/2) + 'px';
+    el.style.bottom = PLANK_H + 'px';
+    plank.appendChild(el);
+}
+
+function renderAll() {
+    plank.querySelectorAll('.weight-object').forEach(e => e.remove());
+    objs.forEach(renderObj);
+}
