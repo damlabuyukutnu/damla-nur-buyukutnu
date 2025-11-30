@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seesaw Simulation</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <h1>Seesaw Simulation</h1>
+
+    <!--stats-->
+    <div class="panel">
+        <div class="stat">
+            <div class="label">Left Weight</div>
+            <div class="value left" id="lW">0 kg</div>
+        </div>
+        <div class="stat">
+            <div class="label">Next Weight</div>
+            <div class="value next" id="next">? kg</div>
+        </div>
+        <div class="stat">
+            <div class="label">Right Weight</div>
+            <div class="value right" id="rW">0 kg</div>
+        </div>
+        <div class="stat">
+            <div class="label">Angle</div>
+            <div class="value angle" id="angle">0°</div>
+        </div>
+    </div>
+    <!--stats-->
+
+
+    <div class="seesaw">
+        <div class="pivot"></div>
+        <div class="plank" id="plank"></div>
+    </div>
+    <div class="buttons">
+        <button class="btn btn-reset" id="resetBtn">Reset </button>
+    </div>
+    <div class="log" id="log">
+    </div>
+    <p class="info">Click the plank to drop a weight</p>
+    <script src="app.js"></script>
+</body>
+</html>
