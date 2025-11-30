@@ -111,5 +111,32 @@ function handleReset() {
     if ('seesawState' in localStorage) delete localStorage.seesawState;
 }
 
+function saveState() {
+    localStorage.seesawState = JSON.stringify({objs, nextW});
+}
+
+function loadState() {
+    if ('seesawState' in localStorage) {
+        try {
+            const state = JSON.parse(localStorage.seesawState);
+            objs = state.objs || [];
+            nextW = state.nextW || randWeight();
+            renderAll();
+            updateTilt();
+            objs.forEach(o => addLog(o.w, o.d, o.d < 0 ? 'left' : 'right'));
+        } catch {
+            objs = [];
+            nextW = randWeight();
+        }
+    } else {
+        objs = [];
+        nextW = randWeight();
+    }
+    updateStats();
+}
+
 plank.addEventListener('click', handleClick);
 resetBtn.addEventListener('click', handleReset);
+
+loadState();
+nDisp.textContent = nextW + ' kg';
